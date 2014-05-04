@@ -13,11 +13,20 @@
         android:text="Feed"/>
 
     <ImageView
+        android:id="@+id/rotten_tomatoes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/feedLabel"
         android:src="@drawable/ic_feed"
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp"/>
+
+    <Button
+        android:id="@+id/add_button"
+        android:layout_below="@id/rotten_tomatoes"
+        android:background="@drawable/invitebutton"
+        android:layout_centerHorizontal="true"
+        android:layout_width="120dp"
+        android:layout_height="46dp" />
 
 </RelativeLayout>

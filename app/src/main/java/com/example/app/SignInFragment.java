@@ -41,6 +41,7 @@ public class SignInFragment extends Fragment {
 
     public void makeRequest(String uName, String pw){
         String dId = getDevIdFromSharedPreferences();
+        System.out.print(dId);
         final HttpDeep httpDeep = new HttpDeep();
         System.out.println("******************\nInside makeRequest()\n****************");
         httpDeep.register(dId, uName, pw, new AsyncHttpResponseHandler() {

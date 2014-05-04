@@ -82,7 +82,7 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
     AtomicInteger msgId = new AtomicInteger();
     Context context;
 
-    String regid;
+    String regid = "";
 
 
     @Override
@@ -267,14 +267,12 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
         System.out.print("THIS IS BULLSHIT");
         if (checkPlayServices()) {
             gcm = GoogleCloudMessaging.getInstance(this);
-            regid = getRegistrationId(context);
-            //mDisplay.setText("Google Play Services Found!");
-
-            System.out.println(regid);
 
             if (regid.isEmpty()) {
                 registerInBackground();
             }
+
+            System.out.println("Registration ID for Cloud Messaging\n\n *********\n " + regid + "\n***********");
         } else {
             Log.i(TAG, "No valid Google Play Services APK found.");
             //mDisplay.setText("No Play Services :(");
@@ -295,7 +293,7 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
         }
         return true;
     }
-
+/*
     private void storeRegistrationId(Context context, String regId) {
         final SharedPreferences prefs = getGcmPreferences(context);
         Log.i(TAG, "Saving regId on app version ");
@@ -319,7 +317,7 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
 
         return registrationId;
     }
-
+*/
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -382,7 +380,7 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
                     sendRegistrationIdToBackend();
 
                     // Persist the regID - no need to register again.
-                    storeRegistrationId(context, regid);
+                    //storeRegistrationId(context, regid);
 
                     System.out.print(regid);
 
@@ -398,7 +396,7 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
 
             @Override
             protected void onPostExecute(String msg) {
-                mDisplay.append(msg + "\n");
+                System.out.print("onPostExecute" + msg + " \n REGID" + regid );
             }
         }.execute(null, null, null);
     }
